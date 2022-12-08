@@ -10,9 +10,6 @@ extern int PlayerAirSDLInit(int width, int height)
     {
         sdl = (PlayerAirSDL*)calloc(1, sizeof(PlayerAirSDL));
 
-//        width = (width / 8) * 3;
-//        height = (height / 8) * 3;
-
         sdl->screen = SDL_CreateWindow("NOVEMBERIZING PLAYER AIR", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, (width / 8) * 3, (height / 8) * 3, SDL_WINDOW_RESIZABLE);
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
         sdl->renderer = SDL_CreateRenderer(sdl->screen, -1, SDL_RENDERER_ACCELERATED);
