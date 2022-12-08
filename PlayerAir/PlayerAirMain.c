@@ -51,10 +51,6 @@ int main(int argc, char** argv)
                 }
             }
         }
-
-        
-
-        
     }
 
 	return 0;
@@ -62,9 +58,8 @@ int main(int argc, char** argv)
 
 static void PlayerAirDisplay(void)
 {
-
-
     SDL_UpdateYUVTexture(sdl->texture, &sdl->rect, ffmpeg->frame->data[0], ffmpeg->frame->linesize[0], ffmpeg->frame->data[1], ffmpeg->frame->linesize[1], ffmpeg->frame->data[2], ffmpeg->frame->linesize[2]);
+    SDL_RenderSetScale(sdl->renderer, 0.375, 0.375);
     SDL_RenderClear(sdl->renderer);
     SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, &sdl->rect);
     SDL_RenderPresent(sdl->renderer);
