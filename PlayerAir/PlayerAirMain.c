@@ -71,6 +71,38 @@ int main(int argc, char** argv)
                 sprintf(buffer, "adb shell input tap %d %d", (int)((double)event.motion.x * 8.0f / 3.0f), (int)((double)event.motion.y * 8.0f / 3.0f));
                 system(buffer);
                 break;
+            case SDL_KEYDOWN:
+                printf("event.key.keysym.sym => %d\r\n", event.key.keysym.sym);
+                switch (event.key.keysym.sym)
+                {
+                case SDLK_a: system("adb shell input keyevent 29"); break;
+                case SDLK_b: system("adb shell input keyevent 30"); break;
+                case SDLK_c: system("adb shell input keyevent 31"); break;
+                case SDLK_d: system("adb shell input keyevent 32"); break;
+                case SDLK_e: system("adb shell input keyevent 33"); break;
+                case SDLK_f: system("adb shell input keyevent 34"); break;
+                case SDLK_g: system("adb shell input keyevent 35"); break;
+                case SDLK_h: system("adb shell input keyevent 36"); break;
+                case SDLK_i: system("adb shell input keyevent 37"); break;
+                case SDLK_j: system("adb shell input keyevent 38"); break;
+                case SDLK_k: system("adb shell input keyevent 39"); break;
+                case SDLK_l: system("adb shell input keyevent 40"); break;
+                case SDLK_m: system("adb shell input keyevent 41"); break;
+                case SDLK_n: system("adb shell input keyevent 42"); break;
+                case SDLK_o: system("adb shell input keyevent 43"); break;
+                case SDLK_p: system("adb shell input keyevent 44"); break;
+                case SDLK_q: system("adb shell input keyevent 45"); break;
+                case SDLK_r: system("adb shell input keyevent 46"); break;
+                case SDLK_s: system("adb shell input keyevent 47"); break;
+                case SDLK_t: system("adb shell input keyevent 48"); break;
+                case SDLK_u: system("adb shell input keyevent 49"); break;
+                case SDLK_v: system("adb shell input keyevent 50"); break;
+                case SDLK_w: system("adb shell input keyevent 51"); break;
+                case SDLK_x: system("adb shell input keyevent 52"); break;
+                case SDLK_y: system("adb shell input keyevent 53"); break;
+                case SDLK_z: system("adb shell input keyevent 54"); break;
+                }
+                break;
             case SDL_MOUSEMOTION:
                 memcpy(&motion, &event.motion, sizeof(SDL_MouseMotionEvent));
                 break;
