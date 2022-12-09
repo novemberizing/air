@@ -76,23 +76,9 @@ extern int PlayerAirFFMpegHeight(void)
 
 extern int PlayerAirFFMpegUpdateFrame(void)
 {
-	int ret = av_read_frame(ffmpeg->formatContext, ffmpeg->packet);
-	if (ret < 0)
+	if (av_read_frame(ffmpeg->formatContext, ffmpeg->packet) < 0)
 	{
-		if (ret == AVERROR(EAGAIN))
-		{
-			printf("1\r\n");
-		}
-		else if (ret == AVERROR(ENOMEM))
-		{
-			printf("2\r\n");
-		}
-		else
-		{
-			printf("ret ==> %d\r\n", ret);
-		}
-		PlayerAirLogError("fail to av_read_frame");
-		exit(0);
+		PlayerAirLogError("fail to send packet");
 		return -1;
 	}
 

@@ -10,5 +10,5 @@ __NOVEMBERIZING AIR__
 빌드 후에 실행을 하려면
 
 ```
-adb exec-out screenrecord --bit-rate=64m --output-format=h264 --size=1080x2400 - | PlayerAir
+adb exec-out screenrecord --time-limit -1 --bit-rate=64m --output-format=h264 --size=1080x2400 - | PlayerAir
 ```
