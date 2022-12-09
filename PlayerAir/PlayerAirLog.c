@@ -3,7 +3,7 @@
 
 #include "PlayerAirLog.h"
 
-PlayerAirLog _log;
+PlayerAirLog logger;
 
 extern void PlayerAirLogWrite(const char* file, int line, const char* func, const char* format, ...)
 {
