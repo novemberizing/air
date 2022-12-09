@@ -1,23 +1,28 @@
 ﻿#include <stdio.h>
 
 #include "PlayerAirFFMpeg.h"
+#include "PlayerAirLog.h"
 #include "PlayerAirSDL.h"
 
 static void PlayerAirDisplay(void);
 
 int main(int argc, char** argv)
 {
+    PlayerAirLogFunctionStart("");
+
     SDL_Init(SDL_INIT_EVERYTHING);
 
 	if (PlayerAirFFMpegInit() < 0)
 	{
-		printf("fail to PlayerAirFFMpegInit()\r\n");
+        PlayerAirLogCritical("fail to PlayerAirFFMpegInit()");
+        PlayerAirLogFunctionEnd("");
 		return -1;
 	}
 
 	if (PlayerAirSDLInit(PlayerAirFFMpegWidth(), PlayerAirFFMpegHeight()) < 0)
 	{
-		printf("fail to PlayerAirSDLInit(PlayerAirFFMpegWidth(), PlayerAirFFMpegHeight())\r\n");
+        PlayerAirLogCritical("fail to PlayerAirSDLInit(PlayerAirFFMpegWidth(), PlayerAirFFMpegHeight())");
+        PlayerAirLogFunctionEnd("");
 		return -1;
 	}
 
@@ -53,6 +58,7 @@ int main(int argc, char** argv)
         }
     }
 
+    PlayerAirLogFunctionEnd("");
 	return 0;
 }
 

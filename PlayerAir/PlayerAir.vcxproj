@@ -138,11 +138,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PlayerAirFFMpeg.c" />
+    <ClCompile Include="PlayerAirLog.c" />
     <ClCompile Include="PlayerAirMain.c" />
     <ClCompile Include="PlayerAirSDL.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerAirFFMpeg.h" />
+    <ClInclude Include="PlayerAirLog.h" />
     <ClInclude Include="PlayerAirSDL.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
