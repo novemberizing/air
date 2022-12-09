@@ -2,6 +2,8 @@
 
 #include "PlayerAirFFMpeg.h"
 
+#include "PlayerAirLog.h"
+
 PlayerAirFFMpeg * ffmpeg = NULL;
 
 extern int PlayerAirFFMpegInit(void)
@@ -15,13 +17,13 @@ extern int PlayerAirFFMpegInit(void)
 
 		if (avformat_open_input(&ffmpeg->formatContext, "pipe:", NULL, &ffmpeg->formatOptionMap) < 0)
 		{
-			printf("fail to avformat_open_input\r\n");
+			PlayerAirLogError("fail to avformat_open_input");
 			return -1;
 		}
 
 		if (avformat_find_stream_info(ffmpeg->formatContext, &ffmpeg->formatOptionMap) < 0)
 		{
-			printf("fail to avformat_find_stream_info\r\n");
+			PlayerAirLogError("fail to avformat_find_stream_info");
 			return -1;
 		}
 
@@ -37,7 +39,7 @@ extern int PlayerAirFFMpegInit(void)
 
 		if (!ffmpeg->parameters || !ffmpeg->codec)
 		{
-			printf("not found video\r\n");
+			PlayerAirLogError("not found video");
 			return -1;
 		}
 
@@ -45,13 +47,13 @@ extern int PlayerAirFFMpegInit(void)
 
 		if (avcodec_parameters_to_context(ffmpeg->codecContext, ffmpeg->parameters) < 0)
 		{
-			printf("fail to avcodec_parameters_to_context\r\n");
+			PlayerAirLogError("fail to avcodec_parameters_to_context");
 			return -1;
 		}
 
 		if (avcodec_open2(ffmpeg->codecContext, ffmpeg->codec, NULL) < 0)
 		{
-			printf("fail to avcodec_open2\r\n");
+			PlayerAirLogError("fail to avcodec_open2");
 			return -1;
 		}
 
@@ -76,20 +78,18 @@ extern int PlayerAirFFMpegUpdateFrame(void)
 {
 	if (av_read_frame(ffmpeg->formatContext, ffmpeg->packet) < 0)
 	{
-		printf("fail to av_read_frame\r\n");
+		PlayerAirLogError("fail to av_read_frame");
 		return -1;
 	}
 
 	if (avcodec_send_packet(ffmpeg->codecContext, ffmpeg->packet) < 0)
 	{
-		printf("fail to send packet\r\n");
+		PlayerAirLogError("fail to send packet");
 		return -1;
 	}
-	int ret = avcodec_receive_frame(ffmpeg->codecContext, ffmpeg->frame);
-	if (ret < 0)
+	if (avcodec_receive_frame(ffmpeg->codecContext, ffmpeg->frame) < 0)
 	{
-		printf("fail to receive frame => %d\r\n", ret);
-		// printf("fail to receive frame\r\n");
+		PlayerAirLogError("fail to receive frame");
 		return -1;
 	}
 	return 0;
