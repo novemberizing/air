@@ -1,4 +1,9 @@
-﻿#include <stdio.h>
+﻿#ifndef   _CRT_SECURE_NO_WARNINGS
+#define   _CRT_SECURE_NO_WARNINGS
+#endif // _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "PlayerAirFFMpeg.h"
 #include "PlayerAirLog.h"
@@ -15,8 +20,8 @@ int main(int argc, char** argv)
 {
     PlayerAirLogFunctionStart("");
 
-    av_log_set_level(AV_LOG_TRACE);
-    av_log_set_callback(PlayerAirFFMpegLogFunc);
+    // av_log_set_level(AV_LOG_TRACE);
+    // av_log_set_callback(PlayerAirFFMpegLogFunc);
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -34,6 +39,7 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
+    char buffer[1024];
     SDL_Event event;
     uint32_t windowID = SDL_GetWindowID(sdl->screen);
     int running = 1;
@@ -42,8 +48,6 @@ int main(int argc, char** argv)
         if (PlayerAirFFMpegUpdateFrame() == 0)
         {
             PlayerAirDisplay();
-
-            
         }
 
         while (SDL_PollEvent(&event))
@@ -60,6 +64,11 @@ int main(int argc, char** argv)
                     }
                     };
                 }
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                printf("mouse button down %d, %d\r\n", (int)((double) event.motion.x * 8.0f / 3.0f), (int) ((double) event.motion.y * 8.0f / 3.0f));
+                sprintf(buffer, "adb shell input tap %d %d", (int)((double)event.motion.x * 8.0f / 3.0f), (int)((double)event.motion.y * 8.0f / 3.0f));
+                system(buffer);
                 break;
             case SDL_QUIT:
                 running = 0;

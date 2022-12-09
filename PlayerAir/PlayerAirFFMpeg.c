@@ -78,7 +78,7 @@ extern int PlayerAirFFMpegUpdateFrame(void)
 {
 	if (av_read_frame(ffmpeg->formatContext, ffmpeg->packet) < 0)
 	{
-		PlayerAirLogError("fail to send packet");
+		PlayerAirLogError("fail to av_read_frame");
 		return -1;
 	}
 

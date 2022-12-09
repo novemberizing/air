@@ -12,3 +12,7 @@ __NOVEMBERIZING AIR__
 ```
 adb exec-out screenrecord --time-limit -1 --bit-rate=64m --output-format=h264 --size=1080x2400 - | PlayerAir
 ```
+
+```
+ScreenRecorder | PlayerAir
+```
