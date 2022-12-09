@@ -42,6 +42,7 @@ int main(int argc, char** argv)
     char buffer[1024];
     SDL_Event event;
     uint32_t windowID = SDL_GetWindowID(sdl->screen);
+    SDL_MouseMotionEvent motion;
     int running = 1;
     while (running)
     {
@@ -69,6 +70,29 @@ int main(int argc, char** argv)
                 printf("mouse button down %d, %d\r\n", (int)((double) event.motion.x * 8.0f / 3.0f), (int) ((double) event.motion.y * 8.0f / 3.0f));
                 sprintf(buffer, "adb shell input tap %d %d", (int)((double)event.motion.x * 8.0f / 3.0f), (int)((double)event.motion.y * 8.0f / 3.0f));
                 system(buffer);
+                break;
+            case SDL_MOUSEMOTION:
+                memcpy(&motion, &event.motion, sizeof(SDL_MouseMotionEvent));
+                break;
+            case SDL_MOUSEWHEEL:
+                if (event.wheel.y > 0)
+                {
+                    printf("mouse wheel up\r\n");
+                    int x = (int)((double)motion.x * 8.0f / 3.0f);
+                    int y = (int)((double)motion.y * 8.0f / 3.0f);
+                    sprintf(buffer, "adb shell input touchscreen swipe %d %d %d %d", x, y, x, y + 500);
+                    printf("%s\r\n", buffer);
+                    system(buffer);
+                }
+                else if (event.wheel.y < 0)
+                {
+                    printf("mouse wheel down\r\n");
+                    int x = (int)((double)motion.x * 8.0f / 3.0f);
+                    int y = (int)((double)motion.y * 8.0f / 3.0f);
+                    sprintf(buffer, "adb shell input touchscreen swipe %d %d %d %d", x, y, x, y - 500);
+                    printf("%s\r\n", buffer);
+                    system(buffer);
+                }
                 break;
             case SDL_QUIT:
                 running = 0;
