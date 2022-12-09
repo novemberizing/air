@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-    SDL_Event evt;
+    SDL_Event event;
     uint32_t windowID = SDL_GetWindowID(sdl->screen);
     int running = 1;
     while (running)
@@ -35,25 +35,27 @@ int main(int argc, char** argv)
         {
             PlayerAirDisplay();
 
-            while (SDL_PollEvent(&evt))
-            {
-                switch (evt.type) {
-                case SDL_WINDOWEVENT:
-                    if (evt.window.windowID == windowID) {
-                        switch (evt.window.event) {
-                        case SDL_WINDOWEVENT_CLOSE: {
-                            evt.type = SDL_QUIT;
-                            running = 0;
-                            SDL_PushEvent(&evt);
-                            break;
-                        }
-                        };
+            
+        }
+
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type) {
+            case SDL_WINDOWEVENT:
+                if (event.window.windowID == windowID) {
+                    switch (event.window.event) {
+                    case SDL_WINDOWEVENT_CLOSE: {
+                        event.type = SDL_QUIT;
+                        running = 0;
+                        SDL_PushEvent(&event);
+                        break;
                     }
-                    break;
-                case SDL_QUIT:
-                    running = 0;
-                    break;
+                    };
                 }
+                break;
+            case SDL_QUIT:
+                running = 0;
+                break;
             }
         }
     }
