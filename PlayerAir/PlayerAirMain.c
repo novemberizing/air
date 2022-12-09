@@ -6,9 +6,17 @@
 
 static void PlayerAirDisplay(void);
 
+static void PlayerAirFFMpegLogFunc(void* context, int level, const char* format, va_list ap)
+{
+    vprintf(format, ap);
+}
+
 int main(int argc, char** argv)
 {
     PlayerAirLogFunctionStart("");
+
+    av_log_set_level(AV_LOG_TRACE);
+    av_log_set_callback(PlayerAirFFMpegLogFunc);
 
     SDL_Init(SDL_INIT_EVERYTHING);
 

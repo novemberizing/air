@@ -147,6 +147,10 @@
     <ClInclude Include="PlayerAirLog.h" />
     <ClInclude Include="PlayerAirSDL.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
+    <None Include="LOG.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
