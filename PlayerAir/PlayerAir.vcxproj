@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\include;C:\lib\SDL2\SDL2-2.26.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\include;C:\lib\SDL2\SDL2-2.26.1\include;c:\lib\libusb\libusb-1.0.26-binaries\libusb-MinGW-x64\include\libusb-1.0;$(IncludePath)</IncludePath>
     <LibraryPath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\lib;C:\lib\SDL2\SDL2-2.26.1\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\include;C:\lib\SDL2\SDL2-2.26.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\include;C:\lib\SDL2\SDL2-2.26.1\include;c:\lib\libusb\libusb-1.0.26-binaries\libusb-MinGW-x64\include\libusb-1.0;$(IncludePath)</IncludePath>
     <LibraryPath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\lib;C:\lib\SDL2\SDL2-2.26.1\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -141,11 +141,13 @@
     <ClCompile Include="PlayerAirLog.c" />
     <ClCompile Include="PlayerAirMain.c" />
     <ClCompile Include="PlayerAirSDL.c" />
+    <ClCompile Include="PlayerAirUSB.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerAirFFMpeg.h" />
     <ClInclude Include="PlayerAirLog.h" />
     <ClInclude Include="PlayerAirSDL.h" />
+    <ClInclude Include="PlayerAirUSB.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
