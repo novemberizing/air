@@ -8,6 +8,7 @@
 #include "PlayerAirFFMpeg.h"
 #include "PlayerAirLog.h"
 #include "PlayerAirSDL.h"
+#include "PlayerAirUSB.h"
 
 static void PlayerAirDisplay(void);
 
@@ -19,6 +20,8 @@ static void PlayerAirFFMpegLogFunc(void* context, int level, const char* format,
 int main(int argc, char** argv)
 {
     PlayerAirLogFunctionStart("");
+
+    PlayerAirUSBInit();
 
     // av_log_set_level(AV_LOG_TRACE);
     // av_log_set_callback(PlayerAirFFMpegLogFunc);

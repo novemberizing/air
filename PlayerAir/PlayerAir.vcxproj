@@ -72,11 +72,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\include;C:\lib\SDL2\SDL2-2.26.1\include;c:\lib\libusb\libusb-1.0.26-binaries\libusb-MinGW-x64\include\libusb-1.0;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\lib;C:\lib\SDL2\SDL2-2.26.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\lib;C:\lib\SDL2\SDL2-2.26.1\lib\x64;c:\lib\libusb\libusb-1.0.26-binaries\VS2015-x64\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\include;C:\lib\SDL2\SDL2-2.26.1\include;c:\lib\libusb\libusb-1.0.26-binaries\libusb-MinGW-x64\include\libusb-1.0;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\lib;C:\lib\SDL2\SDL2-2.26.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\lib\ffmpeg\ffmpeg-5.1.2-full_build-shared\lib;C:\lib\SDL2\SDL2-2.26.1\lib\x64;c:\lib\libusb\libusb-1.0.26-binaries\VS2015-x64\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;avutil.lib;swscale.lib;swresample.lib;postproc.lib;avformat.lib;avfilter.lib;avdevice.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;avutil.lib;swscale.lib;swresample.lib;postproc.lib;avformat.lib;avfilter.lib;avdevice.lib;avcodec.lib;libusb-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,7 +133,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;avutil.lib;swscale.lib;swresample.lib;postproc.lib;avformat.lib;avfilter.lib;avdevice.lib;avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;avutil.lib;swscale.lib;swresample.lib;postproc.lib;avformat.lib;avfilter.lib;avdevice.lib;avcodec.lib;libusb-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
